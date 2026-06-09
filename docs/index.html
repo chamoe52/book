@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>전공책 · 자격증 교재 팝니다</title>
+<meta name="description" content="대학 전공서적과 자격증 교재를 정리해서 판매합니다. 직거래/택배 가능, 일괄 구매 환영." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#f6f1e7;
+    --paper-2:#efe6d4;
+    --card:#fffdf8;
+    --ink:#2b2722;
+    --ink-soft:#7a7064;
+    --line:#ddd1ba;
+    --line-soft:#e7ddc8;
+    --accent:#b4502a;
+    --accent-deep:#8f3c1d;
+    --accent-tint:#f3e2d6;
+    --shadow:0 1px 2px rgba(43,39,34,.04),0 8px 24px -12px rgba(43,39,34,.18);
+    --shadow-hi:0 4px 10px rgba(43,39,34,.08),0 24px 48px -16px rgba(43,39,34,.30);
+    --radius:12px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'IBM Plex Sans KR',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  /* paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity:.04;mix-blend-mode:multiply;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+
+  /* ---------- top bar ---------- */
+  header.bar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,241,231,.86);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .bar-in{display:flex;align-items:center;justify-content:space-between;gap:14px;height:60px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Gowun Batang',serif;font-weight:700;font-size:19px;letter-spacing:-.01em}
+  .brand .mark{width:26px;height:26px;border:1.6px solid var(--ink);border-radius:5px;display:grid;place-items:center;font-size:14px;transform:rotate(-4deg)}
+  .kakao{
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:600;font-size:14px;padding:9px 15px;border-radius:999px;
+    box-shadow:0 6px 16px -8px var(--accent);transition:transform .15s ease,background .15s ease;white-space:nowrap;
+  }
+  .kakao:hover{background:var(--accent-deep);transform:translateY(-1px)}
+  .kakao svg{width:15px;height:15px}
+
+  /* ---------- hero ---------- */
+  .hero{padding:64px 0 30px;position:relative}
+  .kicker{font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:18px}
+  .hero h1{
+    font-family:'Gowun Batang',serif;font-weight:700;letter-spacing:-.02em;
+    font-size:clamp(34px,6.2vw,60px);line-height:1.08;
+  }
+  .hero h1 .u{
+    background:linear-gradient(transparent 62%,var(--accent-tint) 62%);
+    padding:0 .06em;
+  }
+  .lead{margin-top:20px;font-size:clamp(15px,1.7vw,17px);color:var(--ink-soft);max-width:46ch}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .chip{
+    display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;
+    background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 13px;color:var(--ink)
+  }
+  .chip b{color:var(--accent);font-weight:700}
+  .chip .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .navjump{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+  .navjump a{
+    font-size:13px;font-weight:500;text-decoration:none;color:var(--ink-soft);
+    border:1px solid var(--line-soft);background:transparent;border-radius:8px;padding:8px 14px;transition:all .15s ease
+  }
+  .navjump a:hover{color:var(--accent);border-color:var(--accent);background:var(--card)}
+  .navjump a span{color:var(--accent);font-weight:700}
+
+  /* ---------- section ---------- */
+  section.cat{padding:42px 0 8px}
+  .cat-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:6px}
+  .cat-head::after{content:"";flex:1;border-bottom:1px solid var(--line);transform:translateY(5px)}
+  .cat-head h2{font-family:'Gowun Batang',serif;font-weight:700;font-size:clamp(22px,3vw,28px);letter-spacing:-.01em;display:flex;align-items:baseline;gap:10px}
+  .cat-head h2 .cnt{font-family:'IBM Plex Sans KR';font-size:13px;font-weight:600;color:#fff;background:var(--accent);border-radius:999px;padding:2px 9px;transform:translateY(-3px)}
+  .cat-sub{font-size:13.5px;color:var(--ink-soft)}
+
+  /* ---------- grid + card ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:22px;padding:26px 0 6px}
+  .card{
+    background:var(--card);border:1px solid var(--line-soft);border-radius:var(--radius);
+    overflow:hidden;cursor:pointer;display:flex;flex-direction:column;
+    box-shadow:var(--shadow);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,border-color .22s ease;
+    opacity:0;transform:translateY(14px);animation:rise .6s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes rise{to{opacity:1;transform:none}}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hi);border-color:var(--line)}
+  .ph{position:relative;aspect-ratio:4/3.1;background:var(--paper-2);overflow:hidden}
+  .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .ph img{transform:scale(1.045)}
+  .badge{
+    position:absolute;top:10px;left:10px;display:inline-flex;align-items:center;gap:6px;
+    font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:999px;backdrop-filter:blur(4px);
+    background:rgba(255,253,248,.9);border:1px solid var(--line)
+  }
+  .badge .d{width:6px;height:6px;border-radius:50%}
+  .b-new .d{background:#3f8a52}.b-new{color:#2f6b3f}
+  .b-clean .d{background:#2f7d8a}.b-clean{color:#246470}
+  .b-good .d{background:#9a7b2e}.b-good{color:#7c6224}
+  .b-used .d{background:#a85a35}.b-used{color:#8a4827}
+  .multi{
+    position:absolute;bottom:10px;right:10px;font-size:11px;font-weight:600;color:#fff;
+    background:rgba(43,39,34,.72);border-radius:7px;padding:3px 8px;display:inline-flex;align-items:center;gap:5px;backdrop-filter:blur(2px)
+  }
+  .body{padding:15px 16px 17px;display:flex;flex-direction:column;flex:1}
+  .title{font-family:'Gowun Batang',serif;font-weight:700;font-size:16.5px;line-height:1.32;letter-spacing:-.01em}
+  .by{font-size:12.5px;color:var(--ink-soft);margin-top:5px}
+  .note{font-size:12px;color:var(--accent);margin-top:7px;font-weight:500}
+  .price{margin-top:auto;padding-top:14px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+  .price .now{font-size:20px;font-weight:700;letter-spacing:-.01em}
+  .price .was{font-size:13px;color:var(--ink-soft);text-decoration:line-through}
+  .price .off{font-size:11.5px;font-weight:700;color:var(--accent);background:var(--accent-tint);padding:2px 7px;border-radius:6px}
+
+  /* ---------- footer ---------- */
+  footer{margin-top:60px;border-top:1px solid var(--line);background:var(--paper-2)}
+  .foot-in{padding:48px 0 56px;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+  footer h3{font-family:'Gowun Batang',serif;font-weight:700;font-size:24px}
+  footer p{color:var(--ink-soft);font-size:14.5px;max-width:54ch}
+  .deal{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px}
+  .deal .chip{background:transparent}
+  .copy{margin-top:8px;font-size:12px;color:var(--ink-soft);opacity:.8}
+
+  /* ---------- lightbox ---------- */
+  .lb{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;
+    background:rgba(30,26,22,.80)}
+  .lb.open{display:flex;animation:fade .2s ease}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .lb-card{
+    background:var(--paper);border-radius:16px;max-width:920px;width:100%;max-height:92vh;overflow:auto;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.5);animation:pop .26s cubic-bezier(.2,.8,.2,1);position:relative
+  }
+  @keyframes pop{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+  .lb-x{position:absolute;top:14px;right:14px;z-index:3;width:38px;height:38px;border-radius:50%;border:none;cursor:pointer;
+    background:rgba(255,253,248,.92);box-shadow:var(--shadow);font-size:20px;color:var(--ink);display:grid;place-items:center;transition:transform .15s}
+  .lb-x:hover{transform:rotate(90deg)}
+  .lb-imgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:4px;background:var(--paper-2);padding:4px}
+  .lb-imgs img{width:100%;height:100%;max-height:62vh;object-fit:contain;background:var(--paper-2)}
+  .lb-info{padding:22px 26px 28px}
+  .lb-info .title{font-size:24px;line-height:1.25}
+  .lb-info .by{font-size:14px;margin-top:8px}
+  .lb-info .note{font-size:13.5px}
+  .lb-price{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;margin:18px 0 22px}
+  .lb-price .now{font-size:30px;font-weight:700}
+  .lb-price .was{font-size:15px;text-decoration:line-through;color:var(--ink-soft)}
+  .lb-price .off{font-size:13px;font-weight:700;color:var(--accent);background:var(--accent-tint);padding:3px 9px;border-radius:7px}
+  .lb-cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;
+    font-size:15px;padding:12px 22px;border-radius:999px;box-shadow:0 8px 20px -8px var(--accent);transition:all .15s}
+  .lb-cta:hover{background:var(--accent-deep);transform:translateY(-1px)}
+  .lb-tip{font-size:12.5px;color:var(--ink-soft);margin-top:14px}
+
+  @media(max-width:560px){
+    .hero{padding:44px 0 22px}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+    .body{padding:12px 13px 14px}
+    .title{font-size:14.5px}
+    .price .now{font-size:17px}
+    .lb-imgs img{max-height:46vh}
+    .lb-info{padding:18px 18px 24px}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <div class="brand"><span class="mark">📚</span><span>중고 교재 장터</span></div>
+    <a class="kakao" href="https://open.kakao.com/o/sQMFcati" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.7-2.5.6.1 1.3.1 2 .1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
+      카카오톡 문의
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="kicker">USED TEXTBOOKS · 중고 교재</div>
+    <h1>전공책과 자격증 교재,<br /><span class="u">정리해서 넘겨요.</span></h1>
+    <p class="lead">한 학기 잘 쓴 책들입니다. 상태 그대로 사진에 담았어요. 필요한 책 있으면 카카오톡으로 편하게 말 걸어주세요.</p>
+    <div class="meta-row" id="metaRow"></div>
+    <nav class="navjump" id="navJump"></nav>
+  </section>
+
+  <div id="catalog"></div>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <h3>한 권이든 여러 권이든 환영이에요</h3>
+    <p>일괄 구매하시면 가격 더 조정해 드려요. 직거래(학교/근처)와 택배 모두 가능합니다. 가격·상태 궁금한 점은 부담 없이 물어봐 주세요.</p>
+    <div class="deal">
+      <span class="chip"><span class="dot"></span>직거래 가능</span>
+      <span class="chip"><span class="dot"></span>택배 가능</span>
+      <span class="chip"><span class="dot"></span>일괄 구매 할인</span>
+    </div>
+    <a class="kakao" href="https://open.kakao.com/o/sQMFcati" target="_blank" rel="noopener" style="margin-top:6px">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.7-2.5.6.1 1.3.1 2 .1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
+      카카오톡 오픈채팅 열기
+    </a>
+    <div class="copy">© 중고 교재 장터 · 사진 속 책은 모두 실물입니다.</div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <div class="lb-card" id="lbCard">
+    <button class="lb-x" id="lbX" aria-label="닫기">×</button>
+    <div class="lb-imgs" id="lbImgs"></div>
+    <div class="lb-info" id="lbInfo"></div>
+  </div>
+</div>
+
+<script>
+  const KAKAO = "https://open.kakao.com/o/sQMFcati";
+  const IMG = "img/", THUMB = "img/thumb/";
+  const COND = {
+    new:  {cls:"b-new",  label:"거의 새것"},
+    clean:{cls:"b-clean",label:"깨끗"},
+    good: {cls:"b-good", label:"양호"},
+    used: {cls:"b-used", label:"사용감 있음"},
+  };
+
+  // ── 책 데이터 (가격/상태는 자유롭게 수정하세요) ───────────────
+  const CATS = [
+    { id:"major", name:"전공 교재", sub:"컴퓨터공학 · 물리학", books:[
+      {t:"일반물리학실험", by:"김광철·황운하 · 북스힐", list:null, price:5000, cond:"good", photos:["p00"]},
+      {t:"대학물리학 Ⅰ·Ⅱ 세트", by:"Serway·Jewett (10판) · 북스힐", list:48000, price:24000, cond:"clean", note:"전 2권 세트", photos:["p02","p01"]},
+      {t:"데이터 과학을 위한 기초수학", by:"이병준 · 한빛아카데미", list:26000, price:13000, cond:"clean", note:"with 파이썬", photos:["p04","p03"]},
+      {t:"파이썬으로 쉽게 배우는 자료구조", by:"천인국·최영규 · 생능출판 (개정판)", list:29000, price:15000, cond:"new", photos:["p06","p05"]},
+      {t:"객체지향 중심 자바 프로그래밍", by:"김상진 · 도서출판 그린", list:28000, price:14000, cond:"clean", photos:["p08","p07"]},
+      {t:"쉽게 풀어쓴 C언어 Express", by:"천인국 · 생능출판 (개정3판)", list:30000, price:13000, cond:"used", photos:["p10","p09"]},
+      {t:"초보자를 위한 파이썬 200제", by:"장삼용 · 정보문화사", list:20000, price:4000, cond:"clean", note:"구판(절판) · 가격 저렴", photos:["p12","p11"]},
+      {t:"윤성우의 열혈 자료구조", by:"윤성우 · 오렌지미디어", list:25000, price:12000, cond:"clean", photos:["p14","p13"]},
+      {t:"컴퓨팅 사고: 소프트웨어를 통한 문제해결", by:"Riley·Hunt / 문봉교·김응성 역 · 인피니티북스", list:23000, price:10000, cond:"clean", photos:["p16","p15"]},
+    ]},
+    { id:"cert", name:"자격증 교재", sub:"정보처리기사 · SQLD · ADsP", books:[
+      {t:"2026 시나공 정보처리기사 필기 세트", by:"길벗", list:58000, price:29000, cond:"used", note:"기본서 2권 + 기출문제집 1권 (총 3권)", photos:["p21","p22"]},
+      {t:"2025 유선배 SQL개발자(SQLD) 과외노트", by:"정미나 · 시대에듀", list:24000, price:12000, cond:"clean", photos:["p24","p23"]},
+      {t:"2025 ADsP 데이터 분석 준전문가", by:"윤종식 · 데이터에듀", list:31000, price:17000, cond:"clean", photos:["p26","p25"]},
+    ]},
+    { id:"liberal", name:"교양 교재", sub:"교직 · 인적자원", books:[
+      {t:"인적자원개발의 기초 (제3판)", by:"임세영 · 박영사", list:12000, price:5000, cond:"clean", photos:["p18","p17"]},
+      {t:"수업설계: 교수·학습지도안 개발 (제3판)", by:"윤관식 · 양서원", list:18000, price:9000, cond:"good", photos:["p20","p19"]},
+    ]},
+  ];
+
+  const won = n => n.toLocaleString("ko-KR") + "원";
+  const off = (list,price) => list ? Math.round((1 - price/list)*100) : null;
+
+  function priceHTML(b, big){
+    const o = off(b.list,b.price);
+    return `<div class="${big?'lb-price':'price'}">
+      <span class="now">${won(b.price)}</span>
+      ${b.list?`<span class="was">${won(b.list)}</span>`:""}
+      ${o&&o>0?`<span class="off">${o}% ↓</span>`:""}
+    </div>`;
+  }
+
+  function render(){
+    // hero meta
+    const total = CATS.reduce((s,c)=>s+c.books.length,0);
+    document.getElementById("metaRow").innerHTML = `
+      <span class="chip"><b>${total}</b>건 판매 중</span>
+      <span class="chip"><span class="dot"></span>직거래 / 택배</span>
+      <span class="chip"><span class="dot"></span>일괄 구매 환영</span>`;
+    document.getElementById("navJump").innerHTML = CATS.map(c=>
+      `<a href="#${c.id}">${c.name} <span>${c.books.length}</span></a>`).join("");
+
+    // catalog
+    let d=0;
+    document.getElementById("catalog").innerHTML = CATS.map(c=>`
+      <section class="cat" id="${c.id}">
+        <div class="cat-head">
+          <h2>${c.name}<span class="cnt">${c.books.length}</span></h2>
+          <span class="cat-sub">${c.sub}</span>
+        </div>
+        <div class="grid">
+          ${c.books.map((b,i)=>{
+            const ci=COND[b.cond];
+            const gi = `${c.id}:${i}`;
+            return `<article class="card" data-k="${gi}" style="animation-delay:${(d++*45)}ms">
+              <div class="ph">
+                <img src="${THUMB}${b.photos[0]}.jpg" alt="${b.t}" loading="lazy" />
+                <span class="badge ${ci.cls}"><span class="d"></span>${ci.label}</span>
+                ${b.photos.length>1?`<span class="multi">사진 ${b.photos.length}장 ＋</span>`:""}
+              </div>
+              <div class="body">
+                <div class="title">${b.t}</div>
+                <div class="by">${b.by}</div>
+                ${b.note?`<div class="note">${b.note}</div>`:""}
+                ${priceHTML(b,false)}
+              </div>
+            </article>`;
+          }).join("")}
+        </div>
+      </section>`).join("");
+
+    document.querySelectorAll(".card").forEach(el=>{
+      el.addEventListener("click",()=>{
+        const [cid,idx]=el.dataset.k.split(":");
+        const c=CATS.find(x=>x.id===cid); openLB(c.books[+idx]);
+      });
+    });
+  }
+
+  // lightbox
+  const lb=document.getElementById("lb");
+  function openLB(b){
+    document.getElementById("lbImgs").innerHTML = b.photos.map(p=>
+      `<img src="${IMG}${p}.jpg" alt="${b.t}" />`).join("");
+    const ci=COND[b.cond], o=off(b.list,b.price);
+    document.getElementById("lbInfo").innerHTML = `
+      <span class="badge ${ci.cls}" style="position:static;margin-bottom:12px"><span class="d"></span>${ci.label}</span>
+      <div class="title">${b.t}</div>
+      <div class="by">${b.by}</div>
+      ${b.note?`<div class="note">${b.note}</div>`:""}
+      ${priceHTML(b,true)}
+      <a class="lb-cta" href="${KAKAO}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.7-2.5.6.1 1.3.1 2 .1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
+        이 책 문의하기
+      </a>
+      <div class="lb-tip">카카오톡 오픈채팅으로 연결돼요. 책 제목 말씀해 주시면 빠르게 답해드려요.</div>`;
+    lb.classList.add("open"); document.body.style.overflow="hidden";
+    document.getElementById("lbCard").scrollTop=0;
+  }
+  function closeLB(){lb.classList.remove("open");document.body.style.overflow=""}
+  document.getElementById("lbX").addEventListener("click",closeLB);
+  lb.addEventListener("click",e=>{if(e.target===lb)closeLB()});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLB()});
+
+  render();
+</script>
+</body>
+</html>

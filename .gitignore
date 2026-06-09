@@ -1,0 +1,13 @@
+# 원본 카카오톡 사진 (용량 큼 — 웹용 최적화본은 docs/img 에 있음)
+/KakaoTalk_*.jpg
+
+# 로컬 도구/에디터 설정
+/.claude/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
