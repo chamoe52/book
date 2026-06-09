@@ -18,6 +18,21 @@ os.makedirs(THUMB_DIR, exist_ok=True)
 srcs = sorted(glob.glob(os.path.join(SRC_DIR, "KakaoTalk_*.jpg")))
 print(f"source images: {len(srcs)}")
 
+# 누워서 찍힌 책을 세로로 세우기 위한 회전(양수=반시계 CCW). 0/미지정은 그대로.
+ROT = {
+    0: 90,              # 일반물리학실험
+    3: 90, 4: 90,       # 기초수학 (뒤, 앞)
+    5: 90, 6: 90,       # 자료구조 (뒤, 앞)
+    7: 90, 8: 90,       # 자바 (뒤, 앞)
+    9: 90, 10: 90,      # C언어 (뒤, 앞)
+    11: 90, 12: 90,     # 파이썬200제 (뒤, 앞)
+    13: 90, 14: 90,     # 열혈자료구조 (뒤, 앞)
+    15: 90, 16: 90,     # 컴퓨팅사고 (뒤, 앞)
+    17: 90, 18: 90,     # 인적자원 (뒤, 앞)
+    19: 90, 20: 90,     # 수업설계 (뒤, 앞)
+    21: 90, 22: 90,     # 시나공 (스프링 2장)
+}
+
 total_before = 0
 total_after = 0
 for idx, path in enumerate(srcs):
@@ -25,6 +40,9 @@ for idx, path in enumerate(srcs):
     name = f"p{idx:02d}.jpg"
     with Image.open(path) as im:
         im = ImageOps.exif_transpose(im)  # 휴대폰 회전 반영
+        deg = ROT.get(idx, 0)
+        if deg:
+            im = im.rotate(deg, expand=True)  # 양수=반시계(CCW)
         if im.mode != "RGB":
             im = im.convert("RGB")
 
